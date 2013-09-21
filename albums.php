@@ -12,10 +12,11 @@
   $facebook = new Facebook($config);
   $user_id = $facebook->getUser(); 
   $params = array('scope' => 'user_status,publish_stream,user_photos');
+  parse_str($_SERVER['QUERY_STRING']);  
 ?>
 <html>
  <head>
-  <title>PHP Test</title>
+  <title>Album Details</title>
  </head>
  <body>
  <?php
@@ -25,29 +26,11 @@
       // If not, we'll get an exception, which we handle below.
       try {
 
-        $albums = $facebook->api('/me/albums?fields=id,cover_photo','GET');
-		$pictures = array();
-		foreach ($albums['data'] as $album) {
-			$pictures[$album['id']] = $album['cover_photo'];
-			echo '<a href="/pbuddy/albums.php?id='.$album['id'].'"><img src="https://graph.facebook.com/'.$album['cover_photo'].'/picture" title="'.$album['id'].'"/></a>';
+        $photos = $facebook->api('/'.$id.'?fields=photos.fields(source) ','GET');
+		foreach ($photos['photos']['data'] as $photo) {
+			echo '<img src="'.$photo['source'].'"/>';
 		}
-		
-		
-		/*$pictures = array();
-		foreach ($albums['data'] as $album) {
-		$pics = $facebook->api('/'.$album['cover_photo'].'?fields=source,picture');
-		$pictures[$album['id']] = $pics['data'];
-		}
-
-  //display the pictures url
-  foreach ($pictures as $album) {
-    //Inside each album
-    foreach ($album as $image) {
-      $output .= $image['source'] . '<br />';
-    }
-  }*/		
-        //echo "Name: " . $user_profile['name'];
-
+	
       } catch(FacebookApiException $e) {
         // If the user is logged out, you can have a 
         // user ID even though the access token is invalid.
