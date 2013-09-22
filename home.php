@@ -24,12 +24,12 @@
       // We have a user ID, so probably a logged in user.
       // If not, we'll get an exception, which we handle below.
       try {
-
-        $albums = $facebook->api('/me/albums?fields=id,cover_photo','GET');
+		$accessToken = $facebook->getAccessToken();
+        $albums = $facebook->api('/me/albums?fields=id,cover_photo,name','GET');
 		$pictures = array();
 		foreach ($albums['data'] as $album) {
 			$pictures[$album['id']] = $album['cover_photo'];
-			echo '<a href="/pbuddy/albums.php?id='.$album['id'].'"><img src="https://graph.facebook.com/'.$album['cover_photo'].'/picture" title="'.$album['id'].'"/></a>';
+			echo '<a href="/pbuddy/albums.php?id='.$album['id'].'"><img src="https://graph.facebook.com/'.$album['cover_photo'].'/picture?access_token='.$accessToken.'" title="'.$album['id'].'"/><div>'.$album['name'].'</div></a>';
 		}
 		
 		
