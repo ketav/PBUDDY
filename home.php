@@ -38,7 +38,7 @@
       // If not, we'll get an exception, which we handle below.
       try {
 		$accessToken = $facebook->getAccessToken();
-        $albums = $facebook->api('/me/albums?fields=id,cover_photo','GET');
+        $albums = $facebook->api('/me/albums?fields=id,cover_photo,name','GET');
 		$pictures = array();
 		echo "<script>\n";
 		echo "var cover_photo='".json_encode($albums)."';\n";
@@ -118,11 +118,11 @@
 				  }
 				  else
 				  {
-					$("div.divc"+parseInt((x+1)/9).toString()).attr("style","margin-right : 0px; display:none;");
+					$("div.divc"+parseInt((x+1)/9).toString()).attr("style","margin-right : 0px;");
 				  }
 				  }	
 				  
-				  var HTML = "<a href='/pbuddy/albums.php?id="+raw_data[x].id+"'><img src='https://graph.facebook.com/"+raw_data[x].cover_photo+"/picture?access_token="+access_token+"'><span></span></a>";
+				  var HTML = "<a href='/pbuddy/albums.php?id="+raw_data[x].id+"'><img src='https://graph.facebook.com/"+raw_data[x].cover_photo+"/picture?access_token="+access_token+"'><span>"+raw_data[x].name+"</span></a>";
 				  $( document.createElement('div')).attr("class","t"+((x%9)+1)).html( HTML ).appendTo('div.divc'+parseInt(x/9).toString());
 	
 			}
