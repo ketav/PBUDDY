@@ -28,7 +28,114 @@
         <link rel="stylesheet" href="/PBUDDY/Resources/CSS/albumCarousel.css" />
 		<script src="Resources/js/jquery-1.8.2.min.js" type="text/javascript"></script>
 		<script src="Resources/js/jquery.carouFredSel-6.2.0-packed.js" type="text/javascript"></script>
-		<script type="text/javascript">
+		
+</head>
+		<body>
+		
+ <?php
+    if($user_id) {
+
+      // We have a user ID, so probably a logged in user.
+      // If not, we'll get an exception, which we handle below.
+      try {
+		$accessToken = $facebook->getAccessToken();
+        $albums = $facebook->api('/me/albums?fields=id,cover_photo,name&limit=0','GET');
+		$pictures = array();
+		echo "<script>\n";
+		echo "var cover_photo='".json_encode($albums)."';\n";
+		echo "var access_token='".$accessToken."';\n";
+		echo  "</script>\n";
+		/*foreach ($albums['data'] as $album) {
+			//$pictures[$album['id']] = $album['cover_photo'];
+			//echo '<a href="/pbuddy/albums.php?id='.$album['id'].'"><img src="https://graph.facebook.com/'.$album['cover_photo'].'/picture?access_token='.$accessToken.'" title="'.$album['id'].'"/><div>'.$album['name'].'</div></a>';
+		}*/
+		
+		
+		/*$pictures = array();
+		foreach ($albums['data'] as $album) {
+		$pics = $facebook->api('/'.$album['cover_photo'].'?fields=source,picture');
+		$pictures[$album['id']] = $pics['data'];
+		}
+
+  //display the pictures url
+  foreach ($pictures as $album) {
+    //Inside each album
+    foreach ($album as $image) {
+      $output .= $image['source'] . '<br />';
+    }
+  }*/		
+        //echo "Name: " . $user_profile['name'];
+
+      } catch(FacebookApiException $e) {
+        // If the user is logged out, you can have a 
+        // user ID even though the access token is invalid.
+        // In this case, we'll get an exception, so we'll
+        // just ask the user to login again here.
+        $login_url = $facebook->getLoginUrl($params); 
+        echo 'Please <a href="' . $login_url . '">login.</a>';
+        error_log($e->getType());
+        error_log($e->getMessage());
+      }   
+    } else {
+
+      // No user, print a link for the user to login
+      $login_url = $facebook->getLoginUrl($params);
+      echo 'Please <a href="' . $login_url . '">login.</a>';
+
+    }
+
+  ?>
+ 
+  <div id="wrapper">
+			<div id="inner" class="horizontal">
+				<div id="carousel">
+					
+				</div>
+			</div>
+			<a href="#" id="left"></a>
+			<a href="#" id="right"></a>
+			<!--<a href="#" id="up"></a>
+			<a href="#" id="down"></a> -->
+
+			</div>
+			<script type="text/javascript">	
+	$( document ).ready(function() {
+	
+		
+		var raw_data = $.parseJSON(cover_photo).data;
+		for ( item in raw_data)
+		{
+		   if(typeof raw_data[item].cover_photo === 'undefined')
+		   {
+			
+			raw_data.splice(item,1);
+		   }
+		   
+		} 	
+		for ( x=0; x<raw_data.length;x++)
+			{
+			      if((x==0)||(x%9 ==0))
+				  {
+				  $( document.createElement('div') ).attr( "class", "divc"+parseInt((x+1)/9).toString()).appendTo('div#carousel');
+				  if(x===0)
+				  {
+				  $("div.divc0").attr("style","margin-right : 0px;");
+				  }
+				  else
+				  {
+					$("div.divc"+parseInt((x+1)/9).toString()).attr("style","margin-right : 0px;");
+				  }
+				  }	
+				  
+				  var HTML = "<a href='/pbuddy/albums.php?id="+raw_data[x].id+"'><img src='https://graph.facebook.com/"+raw_data[x].cover_photo+"/picture?access_token="+access_token+"'><span>"+raw_data[x].name+"</span></a>";
+				  $( document.createElement('div') ).attr( "class", "t"+((x%9)+1)).html( HTML ).appendTo('div.divc'+parseInt(x/9).toString());
+	
+			}
+			
+});
+		</script>
+ 
+<script type="text/javascript">
 		var currentDisplayed = 'first';
 		var currentIndex = 0;
 			$(function() {
@@ -157,113 +264,6 @@
 				});
 			});
 		</script>
-		<script>
-		$( document ).ready(function() {
-	
-		
-		var raw_data = $.parseJSON(cover_photo).data;
-		for ( item in raw_data)
-		{
-		   if(typeof raw_data[item].cover_photo === 'undefined')
-		   {
-			
-			raw_data.splice(item,1);
-		   }
-		   
-		} 	
-		for ( x=0; x<raw_data.length;x++)
-			{
-			      if((x==0)||(x%9 ==0))
-				  {
-				  $( document.createElement('div') ).attr( "class", "divc"+parseInt((x+1)/9).toString()).appendTo('div#carousel');
-				  if(x===0)
-				  {
-				  $("div.divc0").attr("style","margin-right : 0px;");
-				  }
-				  else
-				  {
-					$("div.divc"+parseInt((x+1)/9).toString()).attr("style","margin-right : 0px; display:none;");
-				  }
-				  }	
-				  
-				  var HTML = "<a href='/pbuddy/albums.php?id="+raw_data[x].id+"'><img src='https://graph.facebook.com/"+raw_data[x].cover_photo+"/picture?access_token="+access_token+"'><span>"+raw_data[x].name+"</span></a>";
-				  $( document.createElement('div') ).attr( "class", "t"+((x%9)+1)).html( HTML ).appendTo('div.divc'+parseInt(x/9).toString());
-	
-			}
-			$("#carousel>div").attr("style","margin-right : 0px; display:block;");
-			$("div.divc0").attr("style","margin-right : 600px; margin-left : 600px;");
-			
-});
-		</script>
-</head>
-		<body>
-		
- <?php
-    if($user_id) {
-
-      // We have a user ID, so probably a logged in user.
-      // If not, we'll get an exception, which we handle below.
-      try {
-		$accessToken = $facebook->getAccessToken();
-        $albums = $facebook->api('/me/albums?fields=id,cover_photo,name','GET');
-		$pictures = array();
-		echo "<script>\n";
-		echo "var cover_photo='".json_encode($albums)."';\n";
-		echo "var access_token='".$accessToken."';\n";
-		echo  "</script>\n";
-		/*foreach ($albums['data'] as $album) {
-			//$pictures[$album['id']] = $album['cover_photo'];
-			//echo '<a href="/pbuddy/albums.php?id='.$album['id'].'"><img src="https://graph.facebook.com/'.$album['cover_photo'].'/picture?access_token='.$accessToken.'" title="'.$album['id'].'"/><div>'.$album['name'].'</div></a>';
-		}*/
-		
-		
-		/*$pictures = array();
-		foreach ($albums['data'] as $album) {
-		$pics = $facebook->api('/'.$album['cover_photo'].'?fields=source,picture');
-		$pictures[$album['id']] = $pics['data'];
-		}
-
-  //display the pictures url
-  foreach ($pictures as $album) {
-    //Inside each album
-    foreach ($album as $image) {
-      $output .= $image['source'] . '<br />';
-    }
-  }*/		
-        //echo "Name: " . $user_profile['name'];
-
-      } catch(FacebookApiException $e) {
-        // If the user is logged out, you can have a 
-        // user ID even though the access token is invalid.
-        // In this case, we'll get an exception, so we'll
-        // just ask the user to login again here.
-        $login_url = $facebook->getLoginUrl($params); 
-        echo 'Please <a href="' . $login_url . '">login.</a>';
-        error_log($e->getType());
-        error_log($e->getMessage());
-      }   
-    } else {
-
-      // No user, print a link for the user to login
-      $login_url = $facebook->getLoginUrl($params);
-      echo 'Please <a href="' . $login_url . '">login.</a>';
-
-    }
-
-  ?>
- 
-  <div id="wrapper">
-			<div id="inner" class="horizontal">
-				<div id="carousel">
-					
-				</div>
-			</div>
-			<a href="#" id="left"></a>
-			<a href="#" id="right"></a>
-			<!--<a href="#" id="up"></a>
-			<a href="#" id="down"></a> -->
-		</div>
-
- </body>
+<</body>
 </html>
 
