@@ -212,11 +212,12 @@ $(function() {
 					 
 				var $thumb		= $item.find('img'),
 					largesrc	= $thumb.data('large'),
+					alt			= $thumb.attr('alt'),
 					title		= $thumb.data('description');
 				
 				$('<img/>').load( function() {
 					
-					$rgGallery.find('div.rg-image').empty().append('<img class="ih_image" src="' + largesrc + '" alt="' + largesrc + '" onload=executeIframe() />');
+					$rgGallery.find('div.rg-image').empty().append('<img class="ih_image" src="' + largesrc + '" alt="' + alt + '" onload=executeIframe() />');
 					
 					if( title )
 						$rgGallery.find('div.rg-caption').show().children('p').empty().text( title );
