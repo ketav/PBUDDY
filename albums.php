@@ -267,7 +267,6 @@
 						   alert(data); // alert on success
 						}
 						});
-						alert('Added your photo to database');
 						$('.ih_zoom').avgrund({
 											width: 380, // max is 640px
 											height: 280, // max is 350px
