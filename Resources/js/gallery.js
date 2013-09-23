@@ -216,7 +216,6 @@ $(function() {
 					title		= $thumb.data('description');
 				
 				$('<img/>').load( function() {
-					
 					$rgGallery.find('div.rg-image').empty().append('<img class="ih_image" src="' + largesrc + '" alt="' + alt + '" onload=executeIframe() />');
 					
 					if( title )

@@ -151,6 +151,7 @@
         $photos = $facebook->api('/'.$id.'?fields=photos.fields(source)&limit=0 ','GET');
 		echo "<script>\n";
 		echo "var photos='".json_encode($photos)."';\n";
+		echo "var userID='".$user_id."'";
 		echo  "</script>\n";
 		/*foreach ($photos['photos']['data'] as $photo) {
 			echo '<img src="'.$photo['source'].'"/>';
@@ -207,7 +208,7 @@
 		} 	
 		for ( x=0; x<raw_data.length;x++)
 			{
-				  var HTML = "<a href='#'><img src='"+raw_data[x].source+"'data-large='"+raw_data[x].source+"'/></a>";
+				  var HTML = "<a href='#'><img src='"+raw_data[x].source+"'data-large='"+raw_data[x].source+"' alt='" +raw_data[x].id+ "'/></a>";
 				  $( document.createElement('li') ).html( HTML ).appendTo('div.es-carousel ul');
 			}
 			
@@ -254,6 +255,18 @@
 						*/
 						$clone.find('.ih_zoom').bind('click',function()
 						{
+						var imgsrc = $('.rg-image').find("img").attr("src");
+						var imgid = $('.rg-image').find("img").attr("alt");
+						//window.location='http://localhost/pbuddy/insert.php?task=insertPhoto&imgid='+imgid+'&src='+imgsrc+'&id='+userID;
+						$.ajax({
+						url: '/pbuddy/insert.php?task=insertPhoto&imgid='+imgid+'&src='+imgsrc+'&id='+userID,
+						type: "GET",
+						dataType: "html",
+						success: function(data)
+						{
+						   alert(data); // alert on success
+						}
+						});
 						alert('Added your photo to database');
 						$('.ih_zoom').avgrund({
 											width: 380, // max is 640px
