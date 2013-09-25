@@ -82,7 +82,7 @@
 								
 								if( typeof photoDetails[x] != 'undefined')
 								{
-										$(document.createElement('img')).attr("id","photo"+x).attr("src",photoDetails[x].photo_url).attr("data-photoID",photoDetails[x].photo_id).appendTo('div.slideshow');
+										$(document.createElement('img')).attr("width","400px").attr("height","400px").attr("id","photo"+x).attr("src",photoDetails[x].photo_url).attr("data-photoID",photoDetails[x].photo_id).appendTo('div.slideshow');
 	
 								}
 						   }
