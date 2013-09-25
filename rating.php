@@ -49,11 +49,11 @@
  </head>
  <body>
     <div class="container">
-		<div class="slideshow">
+		<div class="slideshow" style="position: absolute; margin: 30px 370px;">
 		
-		</div>		
+		</div>			
 		<a href="#" class="next">skip</a>
-		<div class="input select rating-e blue-pill deactivated rating-enable">
+		<div class="input select rating-e blue-pill deactivated rating-enable" style="margin: 510px 360px; position:absolute; background: none repeat scroll 0% 0% activeborder; width: 460px;">
             <select style="display: none;" id="example-e" name="rating">
                 <option selected="selected" value="1">1</option>
                 <option value="2">2</option>
@@ -104,6 +104,8 @@
 	</script>
 <style type="text/css">
 .slideshow img { padding: 15px; border: 1px solid #ccc; background-color: #eee; }
+.rating-e .br-widget a {padding:20px !important;}
+a.next{position: absolute; margin: 475px 565px;}
 </style>
  </body>
 </html>
