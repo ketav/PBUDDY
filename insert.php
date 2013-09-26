@@ -26,6 +26,12 @@ $con=mysqli_connect("localhost","root","","pbuddy");
 	echo $result;
 	//var_dump($result);
 	}
+	else if ($task=="insertUser")
+	{
+	$result = mysqli_query($con, "CALL pb_InsertUser('".$name."','".$email."','".$sex."','".$geo."','".$userid."')");
+	echo $result;
+	//var_dump($result);
+	}
 	else
 	{
 	$result = mysqli_query($con, "CALL pb_InsertPhoto('".$id."','".$src."','".$imgid."')");

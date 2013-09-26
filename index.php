@@ -12,7 +12,7 @@
 
   $facebook = new Facebook($config);
   $user_id = $facebook->getUser(); 
-  $params = array('scope' => 'user_status,publish_stream,user_photos');
+  $params = array('scope' => 'user_status,publish_stream,user_photos,email');
 ?>
 <html lang="en-gb">
 <head>
@@ -20,11 +20,19 @@
   <title>2013 Photo Buddy</title>
   <!-- <meta name="apple-mobile-web-app-capable" content="yes" /> -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">  
+  <script type="text/javascript" src="/pbuddy/resources/js/jquery-1.8.2.min.js"></script>
     <link rel="stylesheet" href="/PBUDDY/Resources/CSS/main.css" />
   </head>
 <body class="landing-page en-gb">
 <?php
     if($user_id) {
+	$user_profile = $facebook->api('/me','GET');
+	$search = Array('"',"'","\r","\n","\r\n","\n\r");
+	$replace =Array('\"',"\'","","","","");
+	$user_profile = str_replace($search,$replace,$user_profile);
+    $user_profile = json_encode($user_profile);
+	
+	
     } else {
       // No user, print a link for the user to login
       $login_url = $facebook->getLoginUrl($params);     
@@ -104,7 +112,34 @@
     </ul>
   </div>
 </div> 
-</div> 
+</div>
+<?php
+	if(isset($user_profile))
+	{
+	echo "<script>\n";
+	echo "var photoDetail = '".$user_profile."'";
+	echo "</script>\n";
+	}
+?>	
+<script type="text/javascript">
+$(document).ready(function(){
+if(typeof photoDetail !=='undefined')
+{
+var userDetail = $.parseJSON(photoDetail);
+//window.location = '/pbuddy/insert.php?task=insertUser&name='+userDetail.name+'&sex='+userDetail.gender+'&userid='+userDetail.id+'&geo='+userDetail.location.name+'&email='+userDetail.email;
+$.ajax({
+url: '/pbuddy/insert.php?task=insertUser&name='+userDetail.name+'&sex='+userDetail.gender+'&userid='+userDetail.id+'&geo='+userDetail.location.name+'&email='+userDetail.email,
+type: "GET",
+						dataType: "html",
+						success: function(data)
+						{
+						   //alert(data); // alert on success
+						}
+						});
+}
+}
+);
+</script>
  </body>
 </html>
 
