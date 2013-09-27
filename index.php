@@ -53,7 +53,7 @@
 	  <?php
 	  if($user_id)
 	  {
-	  echo('<a href="/rating.html">Rate Your Friend</a>');
+	  echo('<a href="rating.php">Rate Your Friend</a>');
 	  }
 	  else
 	  {
