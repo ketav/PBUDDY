@@ -1,4 +1,10 @@
-CREATE DEFINER=`root`@`localhost` PROCEDURE `pb_GetDetails`(IN `FilterValue` VARCHAR(50), IN `PageNumber` INT(10), IN `SortOrder` VARCHAR(50))
+-- --------------------------------------------------------------------------------
+-- Routine DDL
+-- Note: comments before and after the routine body will not be stored by the server
+-- --------------------------------------------------------------------------------
+DELIMITER $$
+
+CREATE PROCEDURE `pb_GetDetails`(IN `FillterValue` VARCHAR(50), IN `PageNumber` INT(10), IN `SortOrder` VARCHAR(50))
 BEGIN
 	DECLARE First INT;
 	DECLARE Last INT;
