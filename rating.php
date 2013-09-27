@@ -34,7 +34,7 @@
 						dataType: "html",
 						success: function(data)
 						{
-						//alert(data);
+							$('.slideshow').cycle('next');
 						}
 						});
                     }
