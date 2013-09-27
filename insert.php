@@ -1,6 +1,7 @@
-<?php
+<?php 
+include '../credentials.php';
 parse_str($_SERVER['QUERY_STRING']);
-$con=mysqli_connect("localhost","root","","pbuddy");
+$con=mysqli_connect($host,$user,$pwd,$db);
 // Check connection
 	if (mysqli_connect_errno())
     {
