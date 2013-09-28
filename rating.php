@@ -38,32 +38,36 @@ function getandInsertPhotosData()
 						{
 						
 						   photoDetails = $.parseJSON(data);
-						   console.log(' Calling from first time');
+						   //console.log(' Calling from first time');
+						   
 						   insertPhotoData();
 						   ajaxCallBack = 0;
 						   $('.slideshow').cycle({
-						   	fx: 'shuffle', // choose your transition type, ex: fade, scrollUp, shuffle, etc...
-							after:removePhotoData
+						   	fx: 'shuffle', // choose your transition type, ex: fade, scrollUp, shuffle, etc...							
 							});
 							$('.slideshow').cycle('pause');
+							if(start ==1)
+						   {
 							$('.slideshow').click(function(){
 						   $('.slideshow').cycle('next');
-						  updatephotoIndex();
+						   removePhotoData();
 							});
 							$('.next').click(function(){
 						   $('.slideshow').cycle('next');
-						   updatephotoIndex();
-							});
+						   removePhotoData();
+							});	
+							}														
 						}						
 						});	}
 			  function insertPhotoData()
 			  {
-			  /*src = $(".slideshow>img").attr('src');
-			  pid = $(".slideshow>img").attr('data-photoID');
-			  $('#slideshow').cycle('destroy');
-			  $(".slideshow>img").remove();*/
-			  if(typeof src!=='undefined')
-			  $(document.createElement('img')).attr("width","400px").attr("height","400px").attr("src",src).attr("data-photoID",pid).appendTo('div.slideshow');	
+			  //alert('insert');
+			  //src = $(".slideshow>img").attr('src');
+			  //pid = $(".slideshow>img").attr('data-photoID');
+			  //$(".slideshow>img").remove();
+			  //if(typeof src!=='undefined')
+			  //$(document.createElement('img')).attr("width","400px").attr("height","400px").attr("src",src).attr("data-photoID",pid).appendTo('div.slideshow');	
+				
 				for( x=0;x<photoDetails.length;x++)
 						   {
 								if( typeof photoDetails[x] != 'undefined')
@@ -72,39 +76,34 @@ function getandInsertPhotosData()
 										console.log(photoDetails[x].photo_url);
 								}
 						   }
+						   //$('.slideshow').cycle('next');
+						  // alert('photo next');
+						   $('.slideshow').cycle('destroy');
 			  }		
 		function removePhotoData()
 		{
-		if(ajaxCallBack!=0)
-		{
-			
-			
-	
 			if(photoIndex==range-3)
 			{
-						photoIndex++;
-
+			$('.slideShow>img').css('display').addClass('viewed');
+			photoIndex++;
 			$('img.viewed').remove();
+			$('.slideshow').cycle('next');
 			start = start + 5;
 			getandInsertPhotosData();
 			console.log(photoIndex);
 			return;
-			}
-			
+			}			
 			photoIndex++;
 			if(photoIndex==5)
 			{
 				photoIndex=0;
 			}
-			console.log(photoIndex);
-		}
-		ajaxCallBack = 1;
+			console.log(photoIndex);		
 		}
 		function updatephotoIndex()
 		{	
-	}
-        $(function () {
-		
+		}
+        $(function () {		
             $('.rating-enable').click(function () {               
                 $('#example-e').barrating('show', {
                     showValues:true,
