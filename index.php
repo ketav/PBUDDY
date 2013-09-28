@@ -26,6 +26,7 @@
 <body class="landing-page en-gb">
 <?php
     if($user_id) {
+	 $_SESSION['userId']=$user_id;
 	$user_profile = $facebook->api('/me','GET');
 	$search = Array('"',"'","\r","\n","\r\n","\n\r");
 	$replace =Array('\"',"\'","","","","");

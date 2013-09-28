@@ -12,39 +12,135 @@
   $facebook = new Facebook($config);
   $user_id = $facebook->getUser(); 
   $params = array('scope' => 'user_status,publish_stream,user_photos');
-  parse_str($_SERVER['QUERY_STRING']);  
+  parse_str($_SERVER['QUERY_STRING']);
+     
 ?>
 <html>
  <head>
   <title>Photo Rating</title>
 <script type="text/javascript" src="/pbuddy/resources/js/jquery-1.8.2.min.js"></script>  
 <script type="text/javascript" src="/pbuddy/resources/js/barrating.js"></script>
-<script type="text/javascript" src="http://malsup.github.com/jquery.cycle.all.js"></script>
+<script type="text/javascript" src="/pbuddy/resources/js/jquery.cycle.all.js"></script>
   <link href="/pbuddy/resources/css/ratingslider.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
+		var ajaxCallBack = 0;
+		var photoDetails;
+		var photoIndex=0;
+		var range = 5;
+		var start = 1;
+function getandInsertPhotosData()
+				{
+				$.ajax({
+						url: '/pbuddy/insert.php?task=getDetails&userId="<?php echo $_SESSION['userId']; ?>"&start='+start+'&range='+range,						
+						type: "GET",
+						dataType: "html",
+						success: function(data)
+						{
+						
+						   photoDetails = $.parseJSON(data);
+						   console.log(' Calling from first time');
+						   insertPhotoData();
+						   ajaxCallBack = 0;
+						   $('.slideshow').cycle({
+						   	fx: 'shuffle', // choose your transition type, ex: fade, scrollUp, shuffle, etc...
+							after:removePhotoData
+							});
+							$('.slideshow').cycle('pause');
+							$('.slideshow').click(function(){
+						   $('.slideshow').cycle('next');
+						  updatephotoIndex();
+							});
+							$('.next').click(function(){
+						   $('.slideshow').cycle('next');
+						   updatephotoIndex();
+							});
+						}						
+						});	}
+			  function insertPhotoData()
+			  {
+			  /*src = $(".slideshow>img").attr('src');
+			  pid = $(".slideshow>img").attr('data-photoID');
+			  $('#slideshow').cycle('destroy');
+			  $(".slideshow>img").remove();*/
+			  if(typeof src!=='undefined')
+			  $(document.createElement('img')).attr("width","400px").attr("height","400px").attr("src",src).attr("data-photoID",pid).appendTo('div.slideshow');	
+				for( x=0;x<photoDetails.length;x++)
+						   {
+								if( typeof photoDetails[x] != 'undefined')
+								{
+										$(document.createElement('img')).attr("width","400px").attr("height","400px").attr("src",photoDetails[x].photo_url).attr("data-photoID",photoDetails[x].photo_id).appendTo('div.slideshow');
+										console.log(photoDetails[x].photo_url);
+								}
+						   }
+			  }		
+		function removePhotoData()
+		{
+		if(ajaxCallBack!=0)
+		{
+			
+			
+	
+			if(photoIndex==range-3)
+			{
+						photoIndex++;
+
+			$('img.viewed').remove();
+			start = start + 5;
+			getandInsertPhotosData();
+			console.log(photoIndex);
+			return;
+			}
+			
+			photoIndex++;
+			if(photoIndex==5)
+			{
+				photoIndex=0;
+			}
+			console.log(photoIndex);
+		}
+		ajaxCallBack = 1;
+		}
+		function updatephotoIndex()
+		{	
+	}
         $(function () {
+		
             $('.rating-enable').click(function () {               
                 $('#example-e').barrating('show', {
                     showValues:true,
                     showSelectedRating:false,
                     onSelect:function(value, text) {
                         $.ajax({
-						url: '/pbuddy/insert.php?task=updateRating&rating='+value+'&pid='+$(".slideshow").children('img:visible').attr("data-photoid"),						
+						url: '/pbuddy/insert.php?task=updateRating&rating='+value+'&pid='+photoDetails[photoIndex].photo_id,						
 						type: "GET",
 						dataType: "html",
 						success: function(data)
 						{
+							if(data!==1)
+							{	
+								updatephotoIndex();
+							}
+							if(data==1)
+							{
 							$('.slideshow').cycle('next');
+							}
+						},
+						error: function()
+						{
+							
 						}
 						});
                     }
                 });
 				
+		
 				$(this).addClass('deactivated');
                 $('.rating-disable').removeClass('deactivated');
             });
 			$('.rating-enable').trigger('click');
-        });
+			
+		});
+        
     </script>
  </head>
  <body>
@@ -69,35 +165,11 @@
         </div>
 	</div><!-- container -->
 	<script type="text/javascript">	
-	$( document ).ready(function() {
-				$.ajax({
-						url: '/pbuddy/insert.php?task=getDetails',						
-						type: "GET",
-						dataType: "html",
-						success: function(data)
-						{
-						   var photoDetails = $.parseJSON(data);
-						   for( x=0;x<5;x++)
-						   {
-								
-								if( typeof photoDetails[x] != 'undefined')
-								{
-										$(document.createElement('img')).attr("width","400px").attr("height","400px").attr("id","photo"+x).attr("src",photoDetails[x].photo_url).attr("data-photoID",photoDetails[x].photo_id).appendTo('div.slideshow');
 	
-								}
-						   }
-						   $('.slideshow').cycle({
-						   	fx: 'shuffle' // choose your transition type, ex: fade, scrollUp, shuffle, etc...
-							});
-								$('.slideshow').cycle('pause');
-							$('.slideshow').click(function(){
-						   $('.slideshow').cycle('next');
-							});
-							$('.next').click(function(){
-						   $('.slideshow').cycle('next');
-							});
-						}						
-						});						
+	$( document ).ready(function() {
+				
+						getandInsertPhotosData();
+						
 						 
 	});
 

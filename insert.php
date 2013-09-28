@@ -13,12 +13,22 @@ $con=mysqli_connect($host,$user,$pwd,$db);
 	}*/
 	if($task == "getDetails")
 	{
-	$result = mysqli_query($con, "CALL pb_GetDetails('0','0','0')");	
-	 $resultArray = array();
+	$result = mysqli_query($con, "CALL pb_GetDetailsN(".$start.",".$range.",".$userId.","."'0')");	
+
+	$resultArray = array();
+	$rows = mysqli_num_rows($result);    
+	
+	if($rows!=0)
+	{
 	while ($row = $result->fetch_assoc()) {
        array_push($resultArray,$row);	   
     }
 	echo json_encode($resultArray);
+	}
+	else
+	{
+		echo "0";
+	}	
 	//var_dump($result);	
 	}
 	else if ($task=="updateRating")
