@@ -31,6 +31,16 @@ $con=mysqli_connect($host,$user,$pwd,$db);
 	}	
 	//var_dump($result);	
 	}
+	else if($task == "getUserDetails")
+	{
+	$result = mysqli_query($con, "CALL pb_GetUserDetails('".$userId."')");	
+	 $userresultArray = array();
+	while ($row = $result->fetch_assoc()) {
+       array_push($userresultArray,$row);	   
+    }
+	echo json_encode($userresultArray);
+	//var_dump($result);	
+	}
 	else if ($task=="updateRating")
 	{
 	$result = mysqli_query($con, "CALL pb_UpdateRating('".$pid."','".$rating."')");
