@@ -28,6 +28,33 @@
 		var photoIndex=0;
 		var range = 5;
 		var start = 1;
+		function barOnSelect(value,text)
+		{
+					console.log($(".slideshow").children('img:visible').attr('data-photoid'));
+					console.log($(".slideshow").children('img:visible').attr('src'));
+					$('#example-e').barrating('destroy');	
+					 $('#example-e').barrating('show',
+					 {
+					 readonly:true,
+					 showValues:true,
+                     showSelectedRating:false,
+					 });
+                        $.ajax({
+						url: '/pbuddy/insert.php?task= &rating='+value+'&pid='+$(".slideshow").children('img:visible').attr('data-photoid'),						
+						type: "GET",
+						dataType: "html",
+						success: function(data)
+						{
+							$('.slideshow').cycle('next');
+							updatephotoIndex();
+						},
+						error: function()
+						{
+							
+						}
+						});
+                    
+		}
 function getandInsertPhotosData()
 				{
 				$.ajax({
@@ -42,19 +69,22 @@ function getandInsertPhotosData()
 						   
 						   insertPhotoData();
 						   ajaxCallBack = 0;
+						   
 						   $('.slideshow').cycle({
 						   	fx: 'shuffle', // choose your transition type, ex: fade, scrollUp, shuffle, etc...							
+							after: removePhotoData
 							});
+							
 							$('.slideshow').cycle('pause');
 							if(start ==1)
 						   {
 							$('.slideshow').click(function(){
 						   $('.slideshow').cycle('next');
-						   removePhotoData();
+						  // removePhotoData();
 							});
 							$('.next').click(function(){
 						   $('.slideshow').cycle('next');
-						   removePhotoData();
+						   //removePhotoData();
 							});	
 							}														
 						}						
@@ -82,9 +112,32 @@ function getandInsertPhotosData()
 			  }		
 		function removePhotoData()
 		{
+		if(ajaxCallBack!==0)
+		{
+			
+			 $('#example-e').barrating('destroy');	
+			 
+			 $('#example-e').barrating('clear');
+			
+			 $('#example-e').barrating('show',
+			 {
+			 readonly:false,
+			 showValues:true,
+			 showSelectedRating:false,
+			 onSelect: barOnSelect
+			 });
+			 $('#example-e').data('barrating').originalRatingValue = 1;
+ 			 $('#example-e').data('barrating').originalRatingText = 1;
+ 			 $('#example-e').data('barrating').currentRatingValue = 1;
+			 $('#example-e').data('barrating').currentRatingText = 1;
+			 $('#example-e').barrating('clear');
+			
 			if(photoIndex==range-3)
 			{
-			$('.slideShow>img').css('display').addClass('viewed');
+			if(typeof $('.slideShow>img').css('display') =='block')
+			{
+				$('.slideShow>img').css('display').addClass('viewed');
+			}
 			photoIndex++;
 			$('img.viewed').remove();
 			$('.slideshow').cycle('next');
@@ -98,44 +151,28 @@ function getandInsertPhotosData()
 			{
 				photoIndex=0;
 			}
-			console.log(photoIndex);		
+			console.log(photoIndex);
+		}
+		else
+		{
+		 	ajaxCallBack=1;
+		}
+		
 		}
 		function updatephotoIndex()
 		{	
 		}
         $(function () {		
-            $('.rating-enable').click(function () {               
                 $('#example-e').barrating('show', {
                     showValues:true,
                     showSelectedRating:false,
-                    onSelect:function(value, text) {
-                        $.ajax({
-						url: '/pbuddy/insert.php?task=updateRating&rating='+value+'&pid='+photoDetails[photoIndex].photo_id,						
-						type: "GET",
-						dataType: "html",
-						success: function(data)
-						{
-							if(data!==1)
-							{	
-								updatephotoIndex();
-							}
-							if(data==1)
-							{
-							$('.slideshow').cycle('next');
-							}
-						},
-						error: function()
-						{
-							
-						}
-						});
-                    }
+					onSelect: barOnSelect
                 });
 				
 		
 				$(this).addClass('deactivated');
                 $('.rating-disable').removeClass('deactivated');
-            });
+            
 			$('.rating-enable').trigger('click');
 			
 		});
@@ -162,6 +199,8 @@ function getandInsertPhotosData()
                 <option value="10">10</option>
             </select>
         </div>
+		<div id=''>
+		</div>
 	</div><!-- container -->
 	<script type="text/javascript">	
 	
