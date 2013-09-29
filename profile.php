@@ -17,7 +17,11 @@
 <html>
  <head>
   <title>Profile</title>
-<script type="text/javascript" src="/pbuddy/resources/js/jquery-1.8.2.min.js"></script>  
+<script type="text/javascript" src="/pbuddy/resources/js/jquery-1.8.2.min.js"></script> 
+<!-- bxSlider Javascript file -->
+<script src="/pbuddy/resources/js/jquery.profilebxslider.js"></script>
+<!-- bxSlider CSS file -->
+<link href="/pbuddy/resources/css/jquery.profilebxslider.css" rel="stylesheet" /> 
  </head>
  <body>
  <?php
@@ -26,13 +30,16 @@
 		echo  "</script>\n";
 ?>
     <div class="container">	
-		<form action="insert.php?task=updateUserDetails" method="post">
+		<form name="profileForm" id="profileForm" method="post">
 		Name: <input type="text" id="name" name="name"><br>
 		Gender: <input type="text" id="gender" name="gender"><br>
 		Address: <input type="text" id="address" name="address"><br>
-		<input type="submit">
+		<input type="button" id="edit" value="Edit"/>
+		<input type="button" id="submit" value="Submit"/>
 		</form>
 		<div class="photos">
+		<ul class="bxslider">
+		</ul>
 		</div>
 	</div><!-- container -->
 	<script type="text/javascript">	
@@ -50,16 +57,46 @@
 								if( typeof userDetails[x] != 'undefined')
 								{
 									$('#name').val(userDetails[x].name);
+									$('#name').attr('disabled', true)
 									$('#gender').val(userDetails[x].sex);
+									$('#gender').attr('disabled', true)
 									$('#address').val(userDetails[x].geography);
-									$(document.createElement('img')).attr("width","400px").attr("height","400px").attr("id","photo"+x).attr("src",userDetails[x].photo_url).attr("data-photoID",userDetails[x].photo_id).appendTo('div.container div.photos');	
+									$('#address').attr('disabled', true)
+									var HTML = "<img id='photo"+x+"' src='"+userDetails[x].photo_url+"'/><span>Current Photo Rating:"+userDetails[x].avg_rating+"/10</span>";	
+									$(document.createElement('li')).html(HTML).appendTo('div.photos ul.bxslider');
 								}
-						   }						  
+						   }
+						$('.bxslider').bxSlider();						   
 						}						
-						});				
-						 
+						});		
+$('#edit').click(function(){
+$('#name').attr('disabled',false);
+$('#gender').attr('disabled',false);
+$('#address').attr('disabled',false);
+});					
+$('#submit').click(function(){
+var name=$('#name').val();
+var gender=$('#gender').val();
+var address=$('#address').val();
+$.ajax({
+						url: '/pbuddy/insert.php?task=updateUserDetails&userId='+userID+'&name='+name+'&gender='+gender+'&address='+address,						
+						type: "GET",
+						dataType: "html",
+						success: function(data)
+						{
+						$('#name').attr('disabled',true);
+						$('#gender').attr('disabled',true);
+						$('#address').attr('disabled',true);
+						alert('Info Update');						
+						}
+		});	
 	});
-	</script>
+});
+</script>
+<style>
+	div.bx-wrapper{max-width:40% !important;}
+	.bx-wrapper img {height:80%;width:100%;}
+</style>
  </body>
 </html>
 

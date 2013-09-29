@@ -31,6 +31,12 @@ $con=mysqli_connect($host,$user,$pwd,$db);
 	}	
 	//var_dump($result);	
 	}
+	else if ($task=="updateUserDetails")
+	{
+	$result = mysqli_query($con, "CALL pb_updateUserDetails('".$userId."','".$name."','".$gender."','".$address."')");
+	echo $result;
+	//var_dump($result);
+	}
 	else if($task == "getUserDetails")
 	{
 	$result = mysqli_query($con, "CALL pb_GetUserDetails('".$userId."')");	

@@ -3,7 +3,6 @@
   // Remember to copy files from the SDK's src/ directory to a
   // directory in your application on the server, such as php-sdk/
   require_once('php-sdk/src/facebook.php');
-
   $config = array(
     'appId' => '188647124563048',
     'secret' => 'dd9e0b9c9ee31990f0f12744fe88892d',
@@ -25,6 +24,9 @@
   </head>
 <body class="landing-page en-gb">
 <?php
+include 'header.php';
+?>
+<?php
     if($user_id) {
 	 $_SESSION['userId']=$user_id;
 	$user_profile = $facebook->api('/me','GET');
@@ -39,7 +41,7 @@
       $login_url = $facebook->getLoginUrl($params);     
     }
   ?>
-  <div id="splash-content">
+<div id="splash-content">
 <div class="splash-focus">
   <div class="splash-header">
     <div class="brand">
@@ -114,6 +116,9 @@
   </div>
 </div> 
 </div>
+<?php
+include 'footer.php';
+?>
 <?php
 	if(isset($user_profile))
 	{

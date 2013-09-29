@@ -694,8 +694,7 @@ body.landing-page {
 }
 
 #splash-content {
-  background: url(../img/splash-bg-mobile.jpg) center 50px;
-  padding-top: 80px;
+  padding-top: 80px;   
 }
 
 .splash-header {
@@ -752,12 +751,7 @@ body.landing-page {
   min-width: 840px;
 }
 
-#splash-content {
-  background-image: url(/pbuddy/resources/images/splash-bg.jpg);
-  background-position: center 0px;
-  padding-top: 168px;
-  padding-bottom: 336px;
-}
+#splash-content { background-image: url(/pbuddy/resources/images/splash-bg.jpg); padding-top: 168px; padding-bottom: 336px; }
 
 
 /* Center callout on the splash page */
@@ -883,3 +877,20 @@ body.landing-page {
   .landing-page #menu .site-nav .nav-my a { background: #2B2B2B; }
   .landing-page #menu .site-nav .nav-upload a { background: #333333;}
   }
+  
+  /*Custom Header and Footer CSS*/
+.header,.footer {font-family: "proxima-nova",sans-serif; font-size: 17px; font-style: normal; font-weight: 300;}
+.header, .header a {color: #FFFFFF !important; margin:0;}
+.header{background: rgba(0,0,0,.7) !important; height:100px; width:100%; position:absolute;}
+.wrapperMenu{padding-left:100px; position:relative;padding-top: 15px;}
+.logo{width:220px; position:relative;   float: left;  padding-left: 30px; padding-top: 10px;}
+.headerMenu{width:730px; position:relative; float: left; padding-left: 30px; }
+.headerMenu ul {float: right; margin-right: -15px;  margin-top: 20px;}
+.headerMenu ul li{list-style:none; float: left;}
+.headerMenu ul li a{text-transform: uppercase; text-decoration: none; font-size: 1em; font-weight: 700; letter-spacing: 0.2em; padding: 0.4em 0.8em;}
+
+.footer{background-color: #000000 !important; height:100px; width:100%; color: #FFFFFF !important; margin:0;}
+.footer div.wrapperFooter{ width: 1026px;text-align: center; padding-left:210px; padding-top:25px;}
+.footer a{text-decoration: none; font-size: 1em; }
+.footerSocial{float:right;}
+
