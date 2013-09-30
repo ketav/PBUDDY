@@ -18,18 +18,24 @@
  <head>
   <title>Profile</title>
 <script type="text/javascript" src="/pbuddy/resources/js/jquery-1.8.2.min.js"></script> 
+<link rel="stylesheet" href="/PBUDDY/Resources/CSS/main.css" />
+<link rel="stylesheet" href="/PBUDDY/Resources/CSS/reset.css" />
 <!-- bxSlider Javascript file -->
 <script src="/pbuddy/resources/js/jquery.profilebxslider.js"></script>
 <!-- bxSlider CSS file -->
 <link href="/pbuddy/resources/css/jquery.profilebxslider.css" rel="stylesheet" /> 
  </head>
- <body>
+ <body id="homePageDesign">
+ <?php
+include 'header.php';
+?>
  <?php
 		echo "<script>\n";
 		echo "var userID='".$user_id."'";
 		echo  "</script>\n";
 ?>
-    <div class="container">	
+    <div class="profilecontainer">	
+	<div class="profileForm">
 		<form name="profileForm" id="profileForm" method="post">
 		Name: <input type="text" id="name" name="name"><br>
 		Gender: <input type="text" id="gender" name="gender"><br>
@@ -37,10 +43,14 @@
 		<input type="button" id="edit" value="Edit"/>
 		<input type="button" id="submit" value="Submit"/>
 		</form>
+		</div>
+		<div class="profilePhotoWrp">
 		<div class="photos">
 		<ul class="bxslider">
 		</ul>
 		</div>
+		</div>
+		
 	</div><!-- container -->
 	<script type="text/javascript">	
 	$( document ).ready(function() {
@@ -97,6 +107,9 @@ $.ajax({
 	div.bx-wrapper{max-width:40% !important;}
 	.bx-wrapper img {height:80%;width:100%;}
 </style>
+<?php
+include 'footer.php';
+?>
  </body>
 </html>
 
