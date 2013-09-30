@@ -1,41 +1,67 @@
-/* CSS reset */
-body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { 
-	margin:0;
-	padding:0;
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+caption, 
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    background:transparent;
+	vertical-align:baseline;
+
 }
-html,body {
-	margin:0;
-	padding:0;
-}
-table {
+table, th, tr, tbody, tfoot, thead, td{
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    background:transparent;
 	border-collapse:collapse;
-	border-spacing:0;
+
 }
-fieldset,img { 
-	border:0;
+article,aside,canvas,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section,summary { 
+    display:block;
 }
-input{
-	border:1px solid #b0b0b0;
-	padding:3px 5px 4px;
-	color:#979797;
-	width:190px;
+
+ul, dl {
+    list-style:none;
+	width:100%;
 }
-address,caption,cite,code,dfn,th,var {
-	font-style:normal;
-	font-weight:normal;
+h1, h2, h3, h4 {
+   font-weight:lighter;
+   }
+a {
+  text-decoration:none;
 }
-ol,ul {
-	list-style:none;
+#homePageDesign #header nav ul li.seprator {
+    background: url("../images/seprator.png") no-repeat scroll right 0 rgba(0, 0, 0, 0);
+    height: 45px;
+    margin-top: -2px;
 }
-caption,th {
-	text-align:left;
+#homePageDesign #header nav ul li, #homePageDesign #header nav ul li a {
+    color: #FFFFFF;
+    display: table-cell;
+    height: 42px;
+    text-align: center;
+    vertical-align: middle;
+    width: 100px;
 }
-h1,h2,h3,h4,h5,h6 {
-	font-size:100%;
-	font-weight:normal;
-}
-q:before,q:after {
-	content:'';
-}
-abbr,acronym { border:0;
+#homePageDesign #header nav ul li {
+    font-size: 17px;
+    line-height: 20px;
+    padding: 0 10px;
+    text-align: center;
+    width: 100px;
 }

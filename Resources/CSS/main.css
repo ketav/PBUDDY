@@ -1,896 +1,144 @@
-/*! normalize.css v2.0.1 | MIT License | git.io/normalize */
-
-/* ==========================================================================
-   HTML5 display definitions
-   ========================================================================== */
-
-/*
- * Corrects `block` display not defined in IE 8/9.
- */
-
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-nav,
-section,
-summary {
-    display: block;
-}
-
-/*
- * Corrects `inline-block` display not defined in IE 8/9.
- */
-
-audio,
-canvas,
-video {
-    display: inline-block;
-}
-
-/*
- * Prevents modern browsers from displaying `audio` without controls.
- * Remove excess height in iOS 5 devices.
- */
-
-audio:not([controls]) {
-    display: none;
-    height: 0;
-}
-
-/*
- * Addresses styling for `hidden` attribute not present in IE 8/9.
- */
-
-[hidden] {
-    display: none;
-}
-
-/* ==========================================================================
-   Base
-   ========================================================================== */
-
-/*
- * 1. Sets default font family to sans-serif.
- * 2. Prevents iOS text size adjust after orientation change, without disabling
- *    user zoom.
- */
-
-html {
-    font-family: sans-serif; /* 1 */
-    -webkit-text-size-adjust: 100%; /* 2 */
-    -ms-text-size-adjust: 100%; /* 2 */
-}
-
-/*
- * Removes default margin.
- */
-
-body {
+/*Global Header CSS*/
+#homePageDesign {
+    background: url("/pbuddy/resources/images/bg.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    color: #FFFFFF;
+    font-family: HappinessRegular;
+    font-size: 12px;
+    font-weight: 400;
     margin: 0;
-}
-
-/* ==========================================================================
-   Links
-   ========================================================================== */
-
-/*
- * Addresses `outline` inconsistency between Chrome and other browsers.
- */
-
-a:focus {
-    outline: thin dotted;
-}
-
-/*
- * Improves readability when focused and also mouse hovered in all browsers.
- */
-
-a:active,
-a:hover {
-    outline: 0;
-}
-
-/* ==========================================================================
-   Typography
-   ========================================================================== */
-
-/*
- * Addresses `h1` font sizes within `section` and `article` in Firefox 4+,
- * Safari 5, and Chrome.
- */
-
-h1 {
-    font-size: 2em;
-}
-
-/*
- * Addresses styling not present in IE 8/9, Safari 5, and Chrome.
- */
-
-abbr[title] {
-    border-bottom: 1px dotted;
-}
-
-/*
- * Addresses style set to `bolder` in Firefox 4+, Safari 5, and Chrome.
- */
-
-b,
-strong {
-    font-weight: bold;
-}
-
-/*
- * Addresses styling not present in Safari 5 and Chrome.
- */
-
-dfn {
-    font-style: italic;
-}
-
-/*
- * Addresses styling not present in IE 8/9.
- */
-
-mark {
-    background: #ff0;
-    color: #000;
-}
-
-
-/*
- * Corrects font family set oddly in Safari 5 and Chrome.
- */
-
-code,
-kbd,
-pre,
-samp {
-    font-family: monospace, serif;
-    font-size: 1em;
-}
-
-/*
- * Improves readability of pre-formatted text in all browsers.
- */
-
-pre {
-    white-space: pre;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-}
-
-/*
- * Sets consistent quote types.
- */
-
-q {
-    quotes: "\201C" "\201D" "\2018" "\2019";
-}
-
-/*
- * Addresses inconsistent and variable font size in all browsers.
- */
-
-small {
-    font-size: 80%;
-}
-
-/*
- * Prevents `sub` and `sup` affecting `line-height` in all browsers.
- */
-
-sub,
-sup {
-    font-size: 75%;
-    line-height: 0;
-    position: relative;
-    vertical-align: baseline;
-}
-
-sup {
-    top: -0.5em;
-}
-
-sub {
-    bottom: -0.25em;
-}
-
-/* ==========================================================================
-   Embedded content
-   ========================================================================== */
-
-/*
- * Removes border when inside `a` element in IE 8/9.
- */
-
-img {
-    border: 0;
-}
-
-/*
- * Corrects overflow displayed oddly in IE 9.
- */
-
-svg:not(:root) {
-    overflow: hidden;
-}
-
-/* ==========================================================================
-   Figures
-   ========================================================================== */
-
-/*
- * Addresses margin not present in IE 8/9 and Safari 5.
- */
-
-figure {
-    margin: 0;
-}
-
-/* ==========================================================================
-   Forms
-   ========================================================================== */
-
-/*
- * Define consistent border, margin, and padding.
- */
-
-fieldset {
-    border: 1px solid #c0c0c0;
-    margin: 0 2px;
-    padding: 0.35em 0.625em 0.75em;
-}
-
-/*
- * 1. Corrects color not being inherited in IE 8/9.
- * 2. Remove padding so people aren't caught out if they zero out fieldsets.
- */
-
-legend {
-    border: 0; /* 1 */
-    padding: 0; /* 2 */
-}
-
-/*
- * 1. Corrects font family not being inherited in all browsers.
- * 2. Corrects font size not being inherited in all browsers.
- * 3. Addresses margins set differently in Firefox 4+, Safari 5, and Chrome
- */
-
-button,
-input,
-select,
-textarea {
-    font-family: inherit; /* 1 */
-    font-size: 100%; /* 2 */
-    margin: 0; /* 3 */
-}
-
-/*
- * Addresses Firefox 4+ setting `line-height` on `input` using `!important` in
- * the UA stylesheet.
- */
-
-button,
-input {
-    line-height: normal;
-}
-
-/*
- * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
- *    and `video` controls.
- * 2. Corrects inability to style clickable `input` types in iOS.
- * 3. Improves usability and consistency of cursor style between image-type
- *    `input` and others.
- */
-
-button,
-html input[type="button"], /* 1 */
-input[type="reset"],
-input[type="submit"] {
-    -webkit-appearance: button; /* 2 */
-    cursor: pointer; /* 3 */
-}
-
-/*
- * Re-set default cursor for disabled elements.
- */
-
-button[disabled],
-input[disabled] {
-    cursor: default;
-}
-
-/*
- * 1. Addresses box sizing set to `content-box` in IE 8/9.
- * 2. Removes excess padding in IE 8/9.
- */
-
-input[type="checkbox"],
-input[type="radio"] {
-    box-sizing: border-box; /* 1 */
-    padding: 0; /* 2 */
-}
-
-/*
- * 1. Addresses `appearance` set to `searchfield` in Safari 5 and Chrome.
- * 2. Addresses `box-sizing` set to `border-box` in Safari 5 and Chrome
- *    (include `-moz` to future-proof).
- */
-
-input[type="search"] {
-    -webkit-appearance: textfield; /* 1 */
-    -moz-box-sizing: content-box;
-    -webkit-box-sizing: content-box; /* 2 */
-    box-sizing: content-box;
-}
-
-/*
- * Removes inner padding and search cancel button in Safari 5 and Chrome
- * on OS X.
- */
-
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-decoration {
-    -webkit-appearance: none;
-}
-
-/*
- * Removes inner padding and border in Firefox 4+.
- */
-
-button::-moz-focus-inner,
-input::-moz-focus-inner {
-    border: 0;
     padding: 0;
 }
-
-/*
- * 1. Removes default vertical scrollbar in IE 8/9.
- * 2. Improves readability and alignment in all browsers.
- */
-
-textarea {
-    overflow: auto; /* 1 */
-    vertical-align: top; /* 2 */
+#homePageDesign #header {
+    background: url("/pbuddy/resources/images/header-bg.png") no-repeat scroll 0 -36px rgba(0, 0, 0, 0);
+    float: left;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+	height:100px;
 }
-
-/* ==========================================================================
-   Tables
-   ========================================================================== */
-
-/*
- * Remove most spacing between table cells.
- */
-
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
+#homePageDesign #header .headerData {
+    margin: 0 auto;
+    position: relative;
+    width: 1003px;
+    z-index: 99;
 }
-* {
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
+#homePageDesign #header .headerData > a {
+    float: left;
 }
-
-/* typography */
-body, input, button {
-  font-size: 15px;
-  font-family: "proxima-nova", "Proxima Nova", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  line-height: 1.45;
+#homePageDesign a {
+    text-decoration: none;
 }
-
-body {
-  color: #333;
-  background-color: #F4F4F4;
+#homePageDesign #header #nav {
+    background: url("/pbuddy/resources/images/headernav.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    color: #FFFFFF;
+    float: right;
+    height: 81px;
+    margin: 14px;
+    width: 325px;
 }
-
-a {
-  text-decoration: none;
-  color: #999;
+nav, section, figure {
+    display: block;
 }
-
-a:hover {
-  text-decoration: underline;
+#homePageDesign #header #nav ul {
+    margin: 10px 0;
 }
-
-h1, h2, h3,
-p,
-ol, ul {
-  margin-top: 0;
-  margin-bottom: 0.8em;
+/*Global Footer CSS*/
+#footer {
+	background: url("../images/footer-left.png") no-repeat scroll left 0 rgba(0, 0, 0, 0);
+    bottom: 0;
+    color: #FFFFFF;
+    font-family: arial;
+    font-size: 12px;
+    font-weight: bold;
+    height: 50px;
+	width:1000px;
+    margin: 1px 85px 0 0;
+    padding-left: 72px;
+    position: relative;
 }
-
-/* Desktop media query
-------------------------- */
-
-@media screen and (min-width: 720px) {
-
-  /* JS hook for media query */
-  body:after {
-    content: 'desktop';
+#homePageDesign #footer div {
+    background: url("../images/footer-right1.png") no-repeat scroll right 0 rgba(0, 0, 0, 0);
+    height: 50px;
+    padding: 5px 135px 0;
+}
+#homePageDesign #footer ul.special-case {
     display: none;
-  }
-
-  body, input, button {
-    font-size: 16px;
-  }
-
-}/* =======================================================================
- * Twitter Web Toolkit (TWT) - The official Twitter rendering library.
- * Copyright 2011 Twitter, Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License") !important;
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * ======================================================================= */
-
-
-/** Section: Reset/Defaults
---------------------------- */
-
-
-/* main column for center-aligning content */
-.main-col {
-  max-width: 800px;
-  margin: 0 auto;
-  position: relative;
 }
-/* Clearfix
-------------------------- */
-
-.clearfix:before,
-.clearfix:after {
-  content: " ";
-  display: table;
+#homePageDesign #footer ul {
+	left: -90px;
+    margin-right: -100px;
+    padding: 15px 0;
+    position: relative;
+    width: auto;	
 }
-
-.clearfix:after {
-  clear: both;
+#homePageDesign #footer ul  li{display: inline-block; padding-left: 30px;}
+#homePageDesign #footer li.footerCopy{padding-left:145px !important;}
+#homePageDesign #footer ul li a {
+	 color: #FFFFFF;
+}
+/*Home Page Main Section*/
+#homePageDesign #wrapper {
+    margin: 0 auto;
+    width: 1003px;
+	padding-top: 142px;
+	max-height: 460px;
+}
+#parentArticleBlockContainer {
+    background: url("/pbuddy/resources/images/narrow-article-top-bg.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    clear: both;
+    margin: 0 auto;
+    padding: 50px 0 87px;
+    position: relative;
+    width: 550px;
+}
+#parentArticleBlockContainer .leftIcon, #parentArticleBlockContainer .rightIcon {
+    background: url("/pbuddy/resources/images/article-left-icon.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 76px;
+    left: 60px;
+    position: absolute;
+    top: -34px;
+    width: 74px;
+}
+#parentArticleBlockContainer .rightIcon {
+    background: url("/pbuddy/resources/images/article-right-icon.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    left: auto !important;
+    right: 0px;
 }
 
-.clearfix {
-  *zoom: 1;
+#parentArticleBlockContainer .middleBg {
+    background: url("/pbuddy/resources/images/narrow-article-middle-bg.png") repeat-y scroll 0 0 rgba(0, 0, 0, 0);
+    bottom: 108px;
+    left: 0;
+    position: absolute;
+    top: 196px;
+    width: 550px;
 }
 
-}/* site header
-------------------------- */
-
-#top-bar {
-  background: #2B2B2B;
-  color: white;
-  height: 50px;
-  position: fixed;
-  left: 0;
-  top: 0;
-  z-index: 100;
-  width: 100%;
+#parentArticleBlockContainer .articlemiddleContainer {
+    margin: 0 auto;
+    position: relative;
+    width: 475px;
 }
-
-#top-bar a {
-  color: white;
+.content-main, .ie6 .content-main {
+    margin: 0 auto;
+    min-height: 400px;
+    width: 525px;
+    z-index: 5;
 }
-
-#top-bar a:hover, a.menu-button {
-  color: #00ACEE;
-  text-decoration: none;
+.content-main .mainRotator{
+padding-top:50px;
+padding-left:125px;
 }
-
-.entry {
-  display: none;
+.content-main .mainRotator img{
+width:300px;
+height:300px;
 }
-
-a.menu-button {
-  text-decoration: none;
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  padding: 5px 10px;
-  background: #444;
-  border-radius: 4px;
+.articleBlockContainer  h1 {
+    font-size: 25px !important;
+    line-height: 30px !important;
+    margin: -30px 196px !important;
 }
-
-a.menu-button:hover,
-a.menu-button:focus {
-  color: white;
-  background: black;
+h1, h2, h3, h4, h5 {
+    color: #EF3128;
+    font-family: HappinessRegular;
 }
-
-
-/* ------ page title ------ */
-
-#page-title {
-  margin: 0;
-  padding: 0.25em 3%;
-  font-size: 26px;
-  color: white;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  text-shadow: 0 1px 2px hsla(0, 0%, 0%, 0.3);
-  line-height: 1.2;
-}
-
-#desktop-nav { display: none; }
-
-.site-nav,
-.site-nav li {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-#menu .site-nav {
-  background: #F4F4F4;
-  padding: 70px 0 20px;
-  font-size: 24px;
-  font-weight: bold;
-  line-height: 44px;
-}
-
-#menu .site-nav li a {
-  display: block;
-  padding-left: 20px;
-  position: relative;
-  color: #333;
-  margin-right: 10px;
-}
-
-#menu .site-nav li a:hover {
-  text-decoration: none;
-}
-
-#menu .site-nav li a:before {
-  content: '';
-  display: block;
-  position: absolute;
-  width: 10px;
-  height: 100%;
-  left: 0;
-  top: 0;
-  background: #333;
-}
-
-#menu .site-nav li a:hover:before {
-  width: 15px;
-}
-
-@media screen and (min-width: 720px) {
-
-#top-bar {
-  position: relative;
-}
-
-#top-bar .menu-button {
-  display: none;
-}
-
-.entry {
-  display: block;
-  position: absolute;
-  right: 10px;
-  top: 0;
-  font-size: 16px;
-  color: #777;
-}
-
-.entry a {
-  display: inline-block;
-  padding: 10px 18px;
-  border-radius: 0 0 4px 4px;
-}
-
-#top-bar .entry .sign-up a {
-}
-
-
-/* page header
--------------------------- */
-
-#page-header {
-  background: #00ACEE;
-  color: white;
-  padding: 0 0 20px 0;
-}   
-
-/* show menu below */
-#desktop-nav { display: block; }
-#menu { display: none; }
-
-#page-title {
-  font-size: 80px;
-  padding-left: 0;
-  padding-right: 0;
-}
-
-#desktop-nav .site-nav {
-  display: table;
-  position: relative;
-  width: 100%;
-  background: #333;
-  background: hsla(0, 0%, 0%, 0.2);
-  padding: 0;
-  line-height: 1.45;
-  border-radius: 5px;
-  box-shadow: 0 1px hsla(0, 0%, 100%, 0.25), inset 0 1px hsla(0, 0%, 0%, 0.1);
-}
-
-#desktop-nav .site-nav li {
-  display: table-cell;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 1.45;
-  text-align: center;
-}
-
-
-
-#desktop-nav .site-nav li a {
-  display: block;
-  padding: 20px 15px;
-  margin: 0;
-  font-weight: 700;
-  color: white;
-}
-
-#desktop-nav .site-nav li a:hover {
-  background-color: hsla(0, 0%, 100%, 0.1);
-  text-decoration: none;
-}
-
-
-/* selected page */
-.golden-page     #desktop-nav .site-nav li.nav-golden a,
-.only-page       #desktop-nav .site-nav li.nav-only a,
-.pulse-page      #desktop-nav .site-nav li.nav-pulse a,
-.trends-page     #desktop-nav .site-nav li.nav-trends a,
-.new-voices-page #desktop-nav .site-nav li.nav-voices a {
-  background: hsla(0, 0%, 0%, 0.1);
-}
-
-
-#desktop-nav .site-nav li.nav-my {
-  padding: 10px;
-}
-
-/* my year on twitter button on right */
-#desktop-nav .site-nav li.nav-my a {
-  background-color: #F5F5F5;
-  background-image: -webkit-linear-gradient( top, hsla(0, 0%, 0%, 0), hsla(0, 0%, 0%, 0.1) );
-  background-image:    -moz-linear-gradient( top, hsla(0, 0%, 0%, 0), hsla(0, 0%, 0%, 0.1) );
-  background-image:         linear-gradient( top, hsla(0, 0%, 0%, 0), hsla(0, 0%, 0%, 0.1) );
-  padding: 10px 0;
-  border-radius: 4px;
-  color: #0c8fc1;
-  text-shadow: 0 1px white;
-}
-
-#desktop-nav .site-nav li.nav-my a:hover {
-  background-color: white;
-  color: #00ACED;
-}
-
-} /* end media query */
-/* Splash!
-------------------------- */
-
-body.landing-page {
-  background: #2B2B2B;
-}
-
-#splash-content {
-  padding-top: 80px;   
-}
-
-.splash-header {
-  width: 160px;
-  margin: 50px auto 160px;
-}
-
-.splash-focus .brand {
-  background: white;
-  text-align: center;
-  height: 160px;
-}
-
-.splash-focus .brand img {
-  width: 80px;
-  height: 80px;
-  display: block;
-  margin: 0 auto;
-}
-
-.splash-focus h1 {
-  line-height: 1.0;
-  margin-bottom: 0.2em;
-  font-size: 38px;
-}
-
-.splash-focus h2 {
-  line-height: 1.0;
-  margin-bottom: 40px;
-  font-size: 13px;
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-
-.splash-focus .start {
-  width:  80px;
-  height: 80px;
-  background: #00ACEE;
-  text-align: center;
-}
-
-.splash-focus .start a {
-  display: block;
-  width: 100%;
-  color: white;
-  padding: 0 5px;
-  display: block;
-  font-weight: bold;
-  text-transform: uppercase;
-  line-height: 80px;
-}
-body.landing-page {
-  min-width: 840px;
-}
-
-#splash-content { background-image: url(/pbuddy/resources/images/splash-bg.jpg); padding-top: 168px; padding-bottom: 336px; }
-
-
-/* Center callout on the splash page */
-.splash-focus {
-  position: relative;
-  width: 840px;
-  height: 336px;
-  margin: 0 auto;
-  background: rgba(0,0,0,.7);
-}
-
-.splash-header {
-  width: auto;
-  min-width: 336px;
-  float: left;
-  height: 100%;
-  margin: 0;
-}
-
-.splash-focus .brand {
-  height: 100%;
-}
-
-.splash-focus h1 {
-  font-size: 30px;
-  line-height: .8;
-  font-weight: 800;
-  color: black;
-  margin-bottom: 0.2em;
-}
-
-.splash-focus h2 {
-  margin: 0 24px 18px;
-  font-size: 26px;
-  font-weight: 100;
-}
-
-.splash-focus .brand img {
-  width: 148px;
-  height: 148px;
-}
-
-.landing-page #menu {
-  display: block;
-}
-
-.landing-page #menu .site-nav {
-  padding: 0;
-  background: transparent;
-}
-
-
-.landing-page #menu {
-  width: auto;
-  height: 100%;
-}
-
-.landing-page #menu .site-nav {
-  display: block;
-  box-shadow: none;
-}
-
-.landing-page #menu .site-nav li {
-  list-style: none;
-  display: block;
-  padding: 0;
-  margin: 0;
-  overflow: hidden;
-  height: 56px;
-  line-height: 56px;
-  text-align: left;
-}
-
-.landing-page #menu li a,
-.landing-page #menu .site-nav li.nav-my a {
-  display: inline-block;
-  padding: 0px 40px;
-  font-size: 29px;
-  color: white;
-  font-weight: 300;
-  line-height: 56px;
-}
-
-.landing-page #menu .site-nav li.nav-my a {
-  background: #2B2B2B;
-  text-shadow: none;
-  box-shadow: none;
-  border-radius: 0;
-}
-
-.landing-page #menu .site-nav li a:before {
-  display: none;
-}
-
-.landing-page #menu .site-nav li a:hover {
-  text-decoration: none;
-  /* dark overlay */
-  background-image: -webkit-linear-gradient( top, hsla(0, 0%, 0%, 0.3), hsla(0, 0%, 0%, 0.3) );
-  background-image:    -moz-linear-gradient( top, hsla(0, 0%, 0%, 0.3), hsla(0, 0%, 0%, 0.3) );
-  background-image:         linear-gradient( top, hsla(0, 0%, 0%, 0.3), hsla(0, 0%, 0%, 0.3) );
-}
-
-
-/* selected nav */
-.golden-page     #menu .nav-golden a,
-.only-page       #menu .nav-only a,
-.pulse-page      #menu .nav-pulse a,
-.trends-page     #menu .nav-trends a,
-.new-voices-page #menu .nav-voices a {
-  color: white;
-}
-
-/* Desktop media query
-------------------------- */
-
-@media screen and (min-width: 720px) {
-
-  .landing-page #menu .site-nav .nav-golden a { background: #FAA226; }
-  .landing-page #menu .site-nav .nav-only a { background: #f4503e; }
-  .landing-page #menu .site-nav .nav-pulse a { background: #00ACEE; }
-  .landing-page #menu .site-nav .nav-trends a { background: #9464e2; }
-  .landing-page #menu .site-nav .nav-voices a { background-color: #49bf68; }
-  .landing-page #menu .site-nav .nav-my a { background: #2B2B2B; }
-  .landing-page #menu .site-nav .nav-upload a { background: #333333;}
-  }
-  
-  /*Custom Header and Footer CSS*/
-.header,.footer {font-family: "proxima-nova",sans-serif; font-size: 17px; font-style: normal; font-weight: 300;}
-.header, .header a {color: #FFFFFF !important; margin:0;}
-.header{background: rgba(0,0,0,.7) !important; height:100px; width:100%; position:absolute;}
-.wrapperMenu{padding-left:100px; position:relative;padding-top: 15px;}
-.logo{width:220px; position:relative;   float: left;  padding-left: 30px; padding-top: 10px;}
-.headerMenu{width:730px; position:relative; float: left; padding-left: 30px; }
-.headerMenu ul {float: right; margin-right: -15px;  margin-top: 20px;}
-.headerMenu ul li{list-style:none; float: left;}
-.headerMenu ul li a{text-transform: uppercase; text-decoration: none; font-size: 1em; font-weight: 700; letter-spacing: 0.2em; padding: 0.4em 0.8em;}
-
-.footer{background-color: #000000 !important; height:100px; width:100%; color: #FFFFFF !important; margin:0;}
-.footer div.wrapperFooter{ width: 1026px;text-align: center; padding-left:210px; padding-top:25px;}
-.footer a{text-decoration: none; font-size: 1em; }
-.footerSocial{float:right;}
-

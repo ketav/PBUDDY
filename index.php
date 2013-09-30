@@ -20,9 +20,10 @@
   <!-- <meta name="apple-mobile-web-app-capable" content="yes" /> -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">  
   <script type="text/javascript" src="/pbuddy/resources/js/jquery-1.8.2.min.js"></script>
-    <link rel="stylesheet" href="/PBUDDY/Resources/CSS/main.css" />
+  <link rel="stylesheet" href="/PBUDDY/Resources/CSS/main.css" />
+  <link rel="stylesheet" href="/PBUDDY/Resources/CSS/reset.css" />
   </head>
-<body class="landing-page en-gb">
+<body id="homePageDesign">
 <?php
 include 'header.php';
 ?>
@@ -41,16 +42,22 @@ include 'header.php';
       $login_url = $facebook->getLoginUrl($params);     
     }
   ?>
-<div id="splash-content">
-<div class="splash-focus">
-  <div class="splash-header">
-    <div class="brand">
-      <img src="/PBUDDY/Resources/images/splash-logo.png" width="148" height="148" alt="">
-      <h1>Photo Buddy</h1>
-      <h2>Rate your buddies</h2>
+<div id="wrapper">
+<div id="Body_Container">
+	<div id="parentArticleBlockContainer">
+	<span class="leftIcon"></span>
+	<span class="rightIcon"></span>
+	<span class="middleBg"></span
+	<div class="articlemiddleContainer">
+		<div class="content-main articleBlockContainer">
+			<h1>Photo Buddy</h1>	
+			<div class="mainRotator">
+			<img src="http://sphotos-e.ak.fbcdn.net/hphotos-ak-frc3/s720x720/1069271_485636758195204_813076474_n.jpg"/>
+			<div>		
+		</div>
     </div> 
   </div>
-  <div id="menu">
+  <div id="menu" style="display:none;">
     <ul class="site-nav clearfix">
       <li class="nav-golden">
 	  <?php
@@ -114,8 +121,8 @@ include 'header.php';
 	  </li>
     </ul>
   </div>
-</div> 
 </div>
+</div> 
 <?php
 include 'footer.php';
 ?>
