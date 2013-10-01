@@ -176,7 +176,6 @@
   	
   <div class="container">
   <div class="content">
-				<h1>Image Gallery <span>- Choose Your Image</span></h1>
 				<div id="rg-gallery" class="rg-gallery">
 					<div class="rg-thumbs">
 						<!-- Elastislide Carousel Thumbnail Viewer -->

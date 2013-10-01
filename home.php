@@ -26,12 +26,17 @@
 		<meta name="keywords" value="grid, images, slideshow, carousel, left, right, up, down" />
 		<title>Slideshow with grid of 9 separately animated images</title>
         <link rel="stylesheet" href="/PBUDDY/Resources/CSS/albumCarousel.css" />
+		<link rel="stylesheet" href="/PBUDDY/Resources/CSS/main.css" />
+		<link rel="stylesheet" href="/PBUDDY/Resources/CSS/reset.css" /> 
 		<script src="Resources/js/jquery-1.8.2.min.js" type="text/javascript"></script>
 		<script src="Resources/js/jquery.carouFredSel-6.2.0-packed.js" type="text/javascript"></script>
 		
 </head>
-		<body>
-		
+<body>
+<?php
+include 'header.php';
+?>
+
  <?php
     if($user_id) {
       // We have a user ID, so probably a logged in user.
@@ -84,8 +89,7 @@
     }
 
   ?>
- 
-  <div id="wrapper">
+  <div id="Cwrapper">
 			<div id="inner" class="horizontal">
 				<div id="carousel">
 					
@@ -96,7 +100,8 @@
 			<!--<a href="#" id="up"></a>
 			<a href="#" id="down"></a> -->
 		</div>
-				<script type="text/javascript" language="javascript">
+		<?php include 'footer.php'?>
+ 		<script type="text/javascript" language="javascript">
 		$( document ).ready(function() {		
 		var raw_data = $.parseJSON(cover_photo).data;
 		for ( item in raw_data)

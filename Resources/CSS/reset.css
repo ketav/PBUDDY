@@ -45,23 +45,4 @@ h1, h2, h3, h4 {
 a {
   text-decoration:none;
 }
-#homePageDesign #header nav ul li.seprator {
-    background: url("../images/seprator.png") no-repeat scroll right 0 rgba(0, 0, 0, 0);
-    height: 45px;
-    margin-top: -2px;
-}
-#homePageDesign #header nav ul li, #homePageDesign #header nav ul li a {
-    color: #FFFFFF;
-    display: table-cell;
-    height: 42px;
-    text-align: center;
-    vertical-align: middle;
-    width: 100px;
-}
-#homePageDesign #header nav ul li {
-    font-size: 17px;
-    line-height: 20px;
-    padding: 0 10px;
-    text-align: center;
-    width: 100px;
-}
+

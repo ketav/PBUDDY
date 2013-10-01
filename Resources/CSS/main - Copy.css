@@ -1,6 +1,6 @@
 /*Global Header CSS*/
-body {
-    background: url("/pbuddy/resources/images/bg.png") repeat scroll 0 0 rgba(0, 0, 0, 0)!important;
+#homePageDesign {
+    background: url("/pbuddy/resources/images/bg.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     color: #FFFFFF;
     font-family: HappinessRegular;
     font-size: 12px;
@@ -8,40 +8,40 @@ body {
     margin: 0;
     padding: 0;
 }
-body>#header {
+#homePageDesign #header {
     background: url("/pbuddy/resources/images/header-bg.png") no-repeat scroll 0 -36px rgba(0, 0, 0, 0);
     float: left;
     margin: 0;
     padding: 0;
     width: 100%;
-	height:158px;
+	height:100px;
 }
-body>#header .headerData {
+#homePageDesign #header .headerData {
     margin: 0 auto;
     position: relative;
     width: 1003px;
     z-index: 99;
 }
-.logoFig {
-height:158px;
-width:194px;
+#homePageDesign #header .headerData > a {
+    float: left;
 }
-
-.nav {
+#homePageDesign a {
+    text-decoration: none;
+}
+#homePageDesign #header #nav {
     background: url("/pbuddy/resources/images/headernav.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    color: #FFFFFF;
     float: right;
     height: 81px;
+    margin: 14px;
     width: 325px;
-	position: absolute;
-	top:10px;
-	right:0px;
 }
-
-.nav ul li.seprator {
+#homePageDesign #header nav ul li.seprator {
     background: url("../images/seprator.png") no-repeat scroll right 0 rgba(0, 0, 0, 0);
-    
+    height: 45px;
+    margin-top: -2px;
 }
-.nav ul li, body> #header nav ul li a {
+#homePageDesign #header nav ul li, #homePageDesign #header nav ul li a {
     color: #FFFFFF;
     display: table-cell;
     height: 42px;
@@ -49,30 +49,21 @@ width:194px;
     vertical-align: middle;
     width: 100px;
 }
-.nav ul li {
+#homePageDesign #header nav ul li {
     font-size: 17px;
     line-height: 20px;
     padding: 0 10px;
+    text-align: center;
     width: 100px;
 }
-
-body>  #header #nav ul {
+nav, section, figure {
+    display: block;
+}
+#homePageDesign #header #nav ul {
     margin: 10px 0;
 }
 /*Global Footer CSS*/
-
-#contentWrapper { 
-min-height:90%;
-height:auto !important;    
-margin: 0 auto -50px;  /* Bottom value must = footer height */
-}
-
-
-#footer{
-	display: table-cell;
-	padding-left:190px;
-}
-#footer .head {
+#footer {
 	background: url("../images/footer-left.png") no-repeat scroll left 0 rgba(0, 0, 0, 0);
     bottom: 0;
     color: #FFFFFF;
@@ -80,29 +71,51 @@ margin: 0 auto -50px;  /* Bottom value must = footer height */
     font-size: 12px;
     font-weight: bold;
     height: 50px;
-	width:100px;
-    
+	width:1000px;
+    margin: 1px 85px 0 0;
     padding-left: 72px;
     position: relative;
 	height: 4em;
-	float: left;
+
 }
-#footer .tail {
+.push
+{
+height: 4em;
+}
+#footer {
+ clear: both;
+ position: relative;
+ z-index: 10;
+ height: 3em;
+ margin-top: -3em;
+}
+#homePageDesign #footer div {
     background: url("../images/footer-right1.png") no-repeat scroll right 0 rgba(0, 0, 0, 0);
     height: 50px;
     padding: 5px 135px 0;
-	width:615px;
-	margin-left :122px;
 }
-
-#footer .tail ul  li{display: inline-block; padding-left: 30px;}
-#footer .tail ul li a {
+#homePageDesign #footer ul.special-case {
+    display: none;
+}
+#homePageDesign #footer ul {
+	left: -90px;
+    margin-right: -100px;
+    padding: 15px 0;
+    position: relative;
+    width: auto;	
+}
+#homePageDesign #footer ul  li{display: inline-block; padding-left: 30px;}
+#homePageDesign #footer li.footerCopy{padding-left:145px !important;}
+#homePageDesign #footer ul li a {
 	 color: #FFFFFF;
 }
-html, body { width:100%; height:100%; }
-#footer, .push { width:715px; height:50px; position:relative; bottom:0; }
 /* Content place holder */
 
+body>div#contentWrapper
+{
+	height: auto;
+	min-height : 100%;
+}
 
 /*Home Page Main Section*/
 #homePageDesign #wrapper {
