@@ -171,3 +171,18 @@ h1, h2, h3, h4, h5 {
     color: #EF3128;
     font-family: HappinessRegular;
 }
+/*Profile Page CSS*/
+#homePageDesign .profilecontainer{ width: 100%;}
+#homePageDesign .profilecontainer .profileForm{ 
+	float: left;
+    height: 500px;
+    padding-left: 150px;
+    padding-top: 100px;
+    position: relative;
+    width: 400px;}
+#homePageDesign .profilecontainer .profilePhotoWrp{  
+	float: left;
+    height: 400px;
+    padding-top: 100px;
+    position: relative;
+    width: 539px;}
