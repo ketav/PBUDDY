@@ -1,6 +1,7 @@
 /* Elastislide Style */
 .es-carousel-wrapper{
-	background: #101010;
+	background: url("/pbuddy/resources/images/filmstrip.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+	background-size: 100% 100px;
 	padding:10px 27px;
 	max-height: 120px;
 	-moz-border-radius: 10px;
@@ -15,7 +16,6 @@
 }
 .es-carousel{
 	overflow:hidden;
-	background:#000;
 	height: 100px;
 }
 .es-carousel ul{

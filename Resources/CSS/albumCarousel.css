@@ -1,25 +1,7 @@
-	html, body {
-				height: 100%;
-				padding: 0;
-				margin: 0;
-			}
-			body {
-				background: #fed;
-			}
-			body * {
-				font-family: Arial, Geneva, SunSans-Regular, sans-serif;
-				font-size: 14px;
-				color: #222;
-				line-height: 20px;
-			}
-
-			#wrapper {
-				width: 100%;
-				height: 100%;
+		#Cwrapper {
 				min-width: 500px;
 				min-height: 500px;
-				overflow: hidden;
-				position: relative;
+				overflow: hidden;	
 			}
 			#inner {
 				position: absolute;
@@ -44,14 +26,19 @@
 				height: 500px;
 				float: left;
 				position: relative;
+
 			}
-			#carousel img {
-				
-				display: block;
-				width: 120px;
-				height: 120px;
-				position: relative;
-			}
+			
+#carousel img {
+    border-color: #170000;
+    border-radius: 60px 60px 60px 60px;
+    border-style: groove;
+    border-width: 4px;
+    display: block;
+    height: 120px;
+    position: relative;
+    width: 120px;
+}
 			
 			div.t1{
 			left: 10px;
