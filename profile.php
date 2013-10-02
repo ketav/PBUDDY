@@ -35,22 +35,23 @@ include 'header.php';
 		echo  "</script>\n";
 ?>
     <div class="profilecontainer">	
-	<div class="profileForm">
-		<form name="profileForm" id="profileForm" method="post">
-		Name: <input type="text" id="name" name="name"><br>
-		Gender: <input type="text" id="gender" name="gender"><br>
-		Address: <input type="text" id="address" name="address"><br>
-		<input type="button" id="edit" value="Edit"/>
-		<input type="button" id="submit" value="Submit"/>
-		</form>
-		</div>
 		<div class="profilePhotoWrp">
 		<div class="photos">
 		<ul class="bxslider">
 		</ul>
 		</div>
 		</div>
-		
+		<div class="profileForm">
+		<form name="profileForm" id="profileForm" method="post">
+		<h4>Edit Your Information</h4>
+		<ul>
+		<li><label>Name:</label><span><input type="text" id="name" name="name"></span></li>
+		<li><label>Gender:</label><span><input type="text" id="gender" name="gender"></span></li>
+		<li><label>Address:</label><span><input type="text" id="address" name="address"></span></li>
+		<li><input type="button" id="edit" value="Edit"/><input type="button" id="submit" value="Submit"/></li>
+		</ul>
+		</form>
+		</div>
 	</div><!-- container -->
 	<script type="text/javascript">	
 	$( document ).ready(function() {
@@ -103,10 +104,6 @@ $.ajax({
 	});
 });
 </script>
-<style>
-	div.bx-wrapper{max-width:40% !important;}
-	.bx-wrapper img {height:80%;width:100%;}
-</style>
 <?php
 include 'footer.php';
 ?>
