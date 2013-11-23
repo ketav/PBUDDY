@@ -55,7 +55,7 @@ $con=mysqli_connect($host,$user,$pwd,$db);
 	}
 	else if ($task=="insertUser")
 	{
-	$result = mysqli_query($con, "CALL pb_InsertUser('".$name."','".$email."','".$sex."','".$geo."','".$userid."')");
+	$result = mysqli_query($con, "CALL pb_InsertUser('".$name."','".$email."','".$sex."','".$geo."','".$userid."','".$age."')");
 	echo $result;
 	//var_dump($result);
 	}

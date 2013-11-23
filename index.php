@@ -30,7 +30,7 @@ include 'header.php';
 <?php
     if($user_id) {
 	 $_SESSION['userId']=$user_id;
-	$user_profile = $facebook->api('/me','GET');
+	$user_profile = $facebook->api('/me?fields=id,name,age_range,hometown,email,gender','GET');
 	$search = Array('"',"'","\r","\n","\r\n","\n\r");
 	$replace =Array('\"',"\'","","","","");
 	$user_profile = str_replace($search,$replace,$user_profile);
@@ -141,7 +141,7 @@ if(typeof photoDetail !=='undefined')
 var userDetail = $.parseJSON(photoDetail);
 //window.location = '/pbuddy/insert.php?task=insertUser&name='+userDetail.name+'&sex='+userDetail.gender+'&userid='+userDetail.id+'&geo='+userDetail.location.name+'&email='+userDetail.email;
 $.ajax({
-url: '/pbuddy/insert.php?task=insertUser&name='+userDetail.name+'&sex='+userDetail.gender+'&userid='+userDetail.id+'&geo='+userDetail.location.name+'&email='+userDetail.email,
+url: '/pbuddy/insert.php?task=insertUser&name='+userDetail.name+'&sex='+userDetail.gender+'&userid='+userDetail.id+'&geo='+userDetail.hometown.name+'&email='+userDetail.email+'&age='+userDetail.age_range.min,
 type: "GET",
 						dataType: "html",
 						success: function(data)
